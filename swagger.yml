@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: API de Encurtamento de URLs
+  version: 1.0.0
+  description: API para encurtar e gerenciar URLs
+
+paths:
+  /shortenUrl:
+    post:
+      summary: Encurtar uma URL
+      tags:
+        - URL
+      requestBody:
+        description: URL a ser encurtada
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                originURL:
+                  type: string
+      responses:
+        '200':
+          description: URL encurtada com sucesso
+        '400':
+          description: Erro ao encurtar a URL
+        '500':
+          description: Erro interno do servidor
+
+  /:
+    get:
+      summary: Obter uma lista de todas as URLs encurtadas
+      tags:
+        - URL
+      responses:
+        '200':
+          description: Lista de URLs encurtadas
+        '500':
+          description: Erro interno do servidor
+
+  /urlId/{id}:
+    get:
+      summary: Obter uma URL encurtada pelo seu identificador único
+      tags:
+        - URL
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Identificador único da URL
+      responses:
+        '200':
+          description: URL encurtada encontrada
+        '404':
+          description: URL não encontrada
+
+  /urlsDate/{date}:
+    get:
+      summary: Obter URLs encurtadas criadas na data especificada ou posterior
+      tags:
+        - URL
+      parameters:
+        - in: path
+          name: date
+          required: true
+          schema:
+            type: string
+          description:  URLs filtradas por Data
+      responses:
+        '200':
+          description: Lista de URLs que correspondem à data especificada
+        '404':
+          description: Nenhuma URL encontrada para a data especificada

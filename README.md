@@ -8,7 +8,7 @@ Este projeto foi criado para demonstrar os conhecimentos adquiridos na unidade 3
 - TypeScript
 - Express.js
 - MongoDB
-- Docker
+- Render for deploy
 
 ## Pré-requisitos
 

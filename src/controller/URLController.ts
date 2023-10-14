@@ -42,7 +42,7 @@ export class URLController {
       const urls: string[] = await URLModel.find()
       res.json(urls)
     } catch (error) {
-      res.status(500).json({ error: 'Internal server error' })
+      res.status(404).json({ error: 'not found' })
     }
   }
 
