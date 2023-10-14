@@ -104,3 +104,18 @@ paths:
           description: Erro na atualização da URL.
         '404':
           description: URL não encontrada para atualização.
+
+  /delete/{id}:
+    delete:
+      summary: Excluir uma URL encurtada por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: URL excluída com sucesso.
+        '404':
+          description: URL não encontrada para exclusão.
