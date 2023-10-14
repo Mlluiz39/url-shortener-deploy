@@ -32,29 +32,51 @@ paths:
       summary: Obter uma lista de todas as URLs encurtadas
       tags:
         - URL
+      requestBody:
+        description: Lista de URLs encurtadas
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                originURL:
+                  type: string
       responses:
         '200':
-          description: Lista de URLs encurtadas
+          description: URLs encurtadas encontradas com sucesso
+        '400':
+          description: Erro ao encontrar as URL
         '500':
           description: Erro interno do servidor
 
-    /url/{id}:
-      get:
-        summary: Obter uma URL encurtada por id
-        tags:
-          - URL
-        parameters:
-          - in: path
-            name: id
-            required: true
+  /url/{id}:
+    get:
+      summary: Obter URL encurtadas por ID
+      tags:
+        - URL
+      parameters:
+        - in: path
+          name: date
+          required: true
+          schema:
+            type: string
+          description:  URL filtrada por ID
+      requestBody:
+        description: Lista de URLs encurtadas
+        required: true
+        content:
+          application/json:
             schema:
-              type: string
-            description: ID da URL
-        responses:
-          '200':
-            description: URL encurtada por id
-          '404':
-            description: URL não encontrada
+              properties:
+                originURL:
+                  type: string
+      responses:
+        '200':
+          description: URLs encurtadas encontradas com sucesso
+        '400':
+          description: Erro ao encontrar as URL
+        '500':
+          description: Erro interno do servidor
 
   /urls/{date}:
     get:
