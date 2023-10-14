@@ -27,6 +27,17 @@ paths:
         '500':
           description: Erro interno do servidor
 
+  /urls:
+    get:
+      summary: Obter uma lista de todas as URLs encurtadas
+      tags:
+        - URL
+      responses:
+        '200':
+          description: Lista de URLs encurtadas
+        '500':
+          description: Erro interno do servidor
+
   /:
     get:
       summary: Obter uma lista de todas as URLs encurtadas
@@ -38,9 +49,9 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /urlId/{id}:
+  /redirectUrl/{hash}:
     get:
-      summary: Obter uma URL encurtada pelo seu identificador único
+      summary: Redirecionar para a URL encurtada
       tags:
         - URL
       parameters:
@@ -49,10 +60,10 @@ paths:
           required: true
           schema:
             type: string
-          description: Identificador único da URL
+          description: Redirecionar para a URL
       responses:
         '200':
-          description: URL encurtada encontrada
+          description: URL redirecionada
         '404':
           description: URL não encontrada
 

@@ -22,7 +22,7 @@ database.connect()
 const urlController = new URLController()
 
 app.post('/shortenUrl', urlController.shortenURL)
-app.get('/:redirectUrl', urlController.redirectURL)
+app.get('/redirectUrl/:hash', urlController.redirectURL)
 app.get('/', urlController.getAllURLs)
 app.get('/urlId/:id', urlController.getShortenedURLById);
 app.get('/urlsDate/:date', urlController.getURLsByDate);
