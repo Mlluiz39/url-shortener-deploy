@@ -20,6 +20,7 @@ app.get('/:hash', urlController.redirectURL)
 app.get('/', urlController.getAllURLs)
 app.get('/url/:id', urlController.getShortenedURLById)
 app.get('/urls/:date', urlController.getURLsByDate)
+app.delete('/delete/:id', urlController.deleteURL)
 
 app.listen(3000, () => {
   console.log(`server is running`)

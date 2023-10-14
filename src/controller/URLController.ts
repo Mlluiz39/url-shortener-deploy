@@ -72,4 +72,9 @@ export class URLController {
       res.status(404).json({ error: 'No URLs found for the specified date' })
     }
   }
+
+  public async deleteURL(req: Request, res: Response): Promise<void> {
+    const { id } = req.params
+    await URLModel.findOneAndDelete({ id })
+  }
 }
