@@ -75,8 +75,8 @@ export class URLController {
 
   public async deleteURL(req: Request, res: Response): Promise<void> {
     const { id } = req.params
-    await URLModel.findOneAndDelete({ id })
-    if (id) {
+    const url = await URLModel.findOneAndDelete({ id })
+    if (url) {
       res.status(204).json({ message: 'URL deleted successfully' })
     } else {
       res.status(404).json({ error: 'URL not found' })
