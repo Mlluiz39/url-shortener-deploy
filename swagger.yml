@@ -80,30 +80,27 @@ paths:
 
   /putUrl/{id}:
     put:
-      summary: Alterar uma URL encurtada por ID
+      summary: Atualizar uma URL encurtada por ID
       parameters:
         - in: path
           name: id
           required: true
           schema:
             type: string
+      requestBody:
+        description: Dados para atualizar a URL.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                originURL:
+                  type: string
       responses:
-        '204':
-          description: URL alterada com sucesso.
+        '200':
+          description: URL atualizada com sucesso.
+        '400':
+          description: Erro na atualização da URL.
         '404':
-          description: URL não encontrada para alteração.
-
-  /delete/{id}:
-    delete:
-      summary: Excluir uma URL encurtada por ID
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-      responses:
-        '204':
-          description: URL excluída com sucesso.
-        '404':
-          description: URL não encontrada para exclusão.
+          description: URL não encontrada para atualização.
