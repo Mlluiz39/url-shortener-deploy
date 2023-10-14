@@ -1,89 +1,79 @@
 openapi: 3.0.0
 info:
-  title: API de Encurtamento de URLs
+  title: API Encurtador de URL
   version: 1.0.0
-  description: API para encurtar e gerenciar URLs
+  description: Uma API para encurtar e gerenciar URLs.
 
 paths:
   /shorten:
     post:
       summary: Encurtar uma URL
-      tags:
-        - URL
       requestBody:
-        description: URL a ser encurtada
         required: true
         content:
           application/json:
             schema:
+              type: object
               properties:
                 originURL:
                   type: string
       responses:
         '200':
-          description: URL encurtada com sucesso
+          description: URL encurtada com sucesso.
         '400':
-          description: Erro ao encurtar a URL
-        '500':
-          description: Erro interno do servidor
+          description: Erro ao encurtar a URL.
+
+  /{hash}:
+    get:
+      summary: Redirecionar para a URL original
+      parameters:
+        - in: path
+          name: hash
+          required: true
+          schema:
+            type: string
+      responses:
+        '302':
+          description: Redirecionar para a URL original.
+        '400':
+          description: URL não encontrada.
 
   /:
     get:
-      summary: Obter uma lista de todas as URLs encurtadas
-      tags:
-        - URL
-      requestBody:
-        description: Lista de URLs encurtadas
-        required: true
-        content:
-          application/json:
+      summary: Obter todas as URLs encurtadas
       responses:
         '200':
-          description: URLs encurtadas encontradas com sucesso
-        '400':
-          description: Erro ao encontrar as URL
-        '500':
-          description: Erro interno do servidor
+          description: Lista de URLs encurtadas.
+        '404':
+          description: Nenhuma URL encontrada.
 
   /url/{id}:
     get:
-      summary: Obter URL encurtadas por ID
-      tags:
-        - URL
+      summary: Obter uma URL encurtada por ID
       parameters:
         - in: path
           name: id
           required: true
           schema:
             type: string
-          description:  URL filtrada por ID
-      requestBody:
-        description: Lista de URLs encurtadas
-        required: true
-        content:
-          application/json:
       responses:
         '200':
-          description: URLs encurtadas encontradas com sucesso
-        '400':
-          description: Erro ao encontrar as URL
-        '500':
-          description: Erro interno do servidor
+          description: URL encurtada encontrada.
+        '404':
+          description: URL não encontrada.
 
   /urls/{date}:
     get:
-      summary: Obter URLs encurtadas criadas na data especificada ou posterior
-      tags:
-        - URL
+      summary: Obter URLs criadas na ou após uma data específica
       parameters:
         - in: path
           name: date
           required: true
           schema:
             type: string
-          description:  URLs filtradas por Data
+            format: date
       responses:
         '200':
-          description: Lista de URLs que correspondem à data especificada
+          description: URLs encontradas.
         '404':
-          description: Nenhuma URL encontrada para a data especificada
+          description: Nenhuma URL encontrada para a data especificada.
