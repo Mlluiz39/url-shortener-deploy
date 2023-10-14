@@ -78,7 +78,7 @@ paths:
         '404':
           description: Nenhuma URL encontrada para a data especificada.
 
-  /deleteURL/{id}:
+  /delete/{id}:
     delete:
       summary: Excluir uma URL encurtada por ID
       parameters:
