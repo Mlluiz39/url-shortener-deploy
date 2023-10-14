@@ -8,7 +8,7 @@ export class URLController {
     const { originURL } = req.body
     const url = await URLModel.findOne({ originURL })
 
-    async (params: string) => {
+    ;async (params: string) => {
       if (url) {
         res.json(url)
         return
@@ -22,13 +22,20 @@ export class URLController {
     const hash = shortid.generate()
     const shortURL = `${config.API_URL}/${hash}`
     const createdAt = new Date()
-    const newUrl = await URLModel.create({ hash, originURL, shortURL, createdAt })
+    const newUrl = await URLModel.create({
+      hash,
+      originURL,
+      shortURL,
+      createdAt,
+    })
     res.json(newUrl)
   }
 
   public async redirectURL(req: Request, res: Response): Promise<void> {
     const { hash } = req.params
-    const url = await URLModel.findOne({ hash })
+    const url = await URLModel.findOne({
+      where: { hash },
+    })
 
     if (url) {
       res.redirect(url.originURL)
@@ -47,7 +54,7 @@ export class URLController {
   }
 
   public async getShortenedURLById(req: Request, res: Response): Promise<void> {
-    const { id } = req.params 
+    const { id } = req.params
     const url = await URLModel.findOne({ id })
 
     if (url) {
@@ -58,7 +65,7 @@ export class URLController {
   }
 
   public async getURLsByDate(req: Request, res: Response): Promise<void> {
-    const { date } = req.params 
+    const { date } = req.params
     const urls = await URLModel.find({ createdAt: { $gte: new Date(date) } })
 
     if (urls.length > 0) {

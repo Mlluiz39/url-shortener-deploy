@@ -12,7 +12,6 @@ import fs from 'fs'
   const doc = yaml.load(fs.readFileSync('./swagger.yml', 'utf8'));
 
 const app = express()
-const porta = 3000
 
 app.use(express.json())
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(doc || {}))
@@ -28,6 +27,6 @@ app.get('/', urlController.getAllURLs)
 app.get('/urlId/:id', urlController.getShortenedURLById);
 app.get('/urlsDate/:date', urlController.getURLsByDate);
 
-app.listen(porta, () => {
-  console.log(`server is running on ${porta}`)
+app.listen(3000, () => {
+  console.log(`server is running`)
 })
