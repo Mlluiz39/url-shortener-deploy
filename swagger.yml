@@ -5,7 +5,7 @@ info:
   description: API para encurtar e gerenciar URLs
 
 paths:
-  /shortenUrl:
+  /shorten:
     post:
       summary: Encurtar uma URL
       tags:
@@ -27,17 +27,6 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /urls:
-    get:
-      summary: Obter uma lista de todas as URLs encurtadas
-      tags:
-        - URL
-      responses:
-        '200':
-          description: Lista de URLs encurtadas
-        '500':
-          description: Erro interno do servidor
-
   /:
     get:
       summary: Obter uma lista de todas as URLs encurtadas
@@ -49,7 +38,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /redirectUrl/{hash}:
+  /{hash}:
     get:
       summary: Redirecionar para a URL encurtada
       tags:
@@ -67,7 +56,25 @@ paths:
         '404':
           description: URL não encontrada
 
-  /urlsDate/{date}:
+    /url/{id}:
+      get:
+        summary: Obter uma URL encurtada por id
+        tags:
+          - URL
+        parameters:
+          - in: path
+            name: id
+            required: true
+            schema:
+              type: string
+            description: ID da URL
+        responses:
+          '200':
+            description: URL encurtada por id
+          '404':
+            description: URL não encontrada
+
+  /urls/{date}:
     get:
       summary: Obter URLs encurtadas criadas na data especificada ou posterior
       tags:

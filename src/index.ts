@@ -21,11 +21,11 @@ database.connect()
 
 const urlController = new URLController()
 
-app.post('/shortenUrl', urlController.shortenURL)
-app.get('/redirectUrl/:hash', urlController.redirectURL)
+app.post('/shorten', urlController.shortenURL)
+app.get('/:hash', urlController.redirectURL)
 app.get('/', urlController.getAllURLs)
-app.get('/urlId/:id', urlController.getShortenedURLById);
-app.get('/urlsDate/:date', urlController.getURLsByDate);
+app.get('/url/:id', urlController.getShortenedURLById);
+app.get('/urls/:date', urlController.getURLsByDate);
 
 app.listen(3000, () => {
   console.log(`server is running`)
