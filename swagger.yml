@@ -78,6 +78,21 @@ paths:
         '404':
           description: Nenhuma URL encontrada para a data especificada.
 
+  /putUrl/{id}:
+    put:
+      summary: Alterar uma URL encurtada por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: URL alterada com sucesso.
+        '404':
+          description: URL não encontrada para alteração.
+
   /delete/{id}:
     delete:
       summary: Excluir uma URL encurtada por ID

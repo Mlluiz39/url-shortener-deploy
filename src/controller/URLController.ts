@@ -73,6 +73,20 @@ export class URLController {
     }
   }
 
+  public async putURL(req: Request, res: Response): Promise<void> {
+    const { id } = req.params
+    const { originURL } = req.body
+    const url = await URLModel.findOne({ id })
+
+    if (url) {
+      url.originURL = originURL
+      await url.save()
+      res.json(url)
+    } else {
+      res.status(404).json({ error: 'URL not found' })
+    }
+  }
+
   public async deleteURL(req: Request, res: Response): Promise<void> {
     const { id } = req.params
     const url = await URLModel.findOneAndDelete({ id })
