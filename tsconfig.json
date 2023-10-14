@@ -1,11 +1,11 @@
 /* Visit https://aka.ms/tsconfig.json to read more about this file */
 {
   "compilerOptions": {
-    "target":"ES2022",
+    "target":"ES2020",
     "module": "commonjs",
     "moduleResolution": "node",
     "rootDir": "src",
-    "lib": ["ES2022", "DOM", "ES7", "DOM.Iterable"],
+    //"lib": ["ES2022", "DOM", "ES7", "DOM.Iterable"],
     "typeRoots": [
       "src/@types",
       "./node_modules/@types",
