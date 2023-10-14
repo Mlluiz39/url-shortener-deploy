@@ -11,7 +11,7 @@ export class URL extends Typegoose {
   shortURL!: string
 
   @prop({ required: false})
-  createdAt?: Date
+  createdAt!: Date
 }
 
 export const URLModel = new URL().getModelForClass(URL)

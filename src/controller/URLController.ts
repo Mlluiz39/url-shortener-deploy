@@ -33,14 +33,15 @@ export class URLController {
 
   public async redirectURL(req: Request, res: Response): Promise<void> {
     const { hash } = req.params
-    const url = await URLModel.findOne({
-      where: { hash },
-    })
+    console.log(`Recebido o hash: ${hash}`)
+    const url = await URLModel.findOne({ hash })
 
     if (url) {
+      console.log(`URL encontrada: ${url.originURL}`)
       res.redirect(url.originURL)
       return
     }
+     console.log('URL não encontrada')
     res.status(400).json({ error: 'URL not found' })
   }
 
