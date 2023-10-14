@@ -38,24 +38,6 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /{hash}:
-    get:
-      summary: Redirecionar para a URL encurtada
-      tags:
-        - URL
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-          description: Redirecionar para a URL
-      responses:
-        '200':
-          description: URL redirecionada
-        '404':
-          description: URL não encontrada
-
     /url/{id}:
       get:
         summary: Obter uma URL encurtada por id
