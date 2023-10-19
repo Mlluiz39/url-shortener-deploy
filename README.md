@@ -60,7 +60,7 @@ POST /shorten: Encurta uma URL longa.
 
 GET /:hash: Redireciona para a URL original correspondente à URL curta.
 
-GET /: Retorna todas as URLs encurtadas.
+GET /:/: Retorna todas as URLs encurtadas.
 
 GET /url/:id: Retorna uma URL encurtada com base no ID.
 
