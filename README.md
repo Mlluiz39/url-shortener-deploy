@@ -68,7 +68,7 @@ GET /urls/:date: Retorna URLs encurtadas com base na data.
 
 PUT /putUrl/:id: Atualiza uma url encurtada por ID
 
-DELETE /delete/:id Excluir uma url encurtada por ID
+DELETE /delete/:id: Excluir uma url encurtada por ID
 
 
 ### Contribuição
