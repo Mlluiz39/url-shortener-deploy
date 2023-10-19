@@ -22,7 +22,7 @@ Certifique-se de ter as seguintes ferramentas e dependências instaladas antes d
 
 - **MongoDB:** É necessário ter um servidor MongoDB em execução ou uma instância MongoDB configurada.
 
-- **Docker:** Você precisará do Docker para usar um contêiner Docker para o banco de dados.
+- **Render:** Você precisará entrar no site do render [render](https://render.com/) ou qualquer outra plataforma para fazer o deploy da aplicação
 
 ## Instalação
 
@@ -32,9 +32,12 @@ Siga estas etapas para configurar e executar o projeto:
 
    ```bash
    git clone https://github.com/Mlluiz39/url-shortener
+
+   2. Entre no repositório
+
    cd url-shortener
 
-Instale as dependências:
+2. Instale as dependências:
 
 Se você estiver usando o Yarn:
 
@@ -62,6 +65,10 @@ GET /: Retorna todas as URLs encurtadas.
 GET /url/:id: Retorna uma URL encurtada com base no ID.
 
 GET /urls/:date: Retorna URLs encurtadas com base na data.
+
+PUT /putUrl/:id: Atualiza uma url encurtada por ID
+
+DELETE /delete/:id Excluir uma url encurtada por ID
 
 
 ### Contribuição
