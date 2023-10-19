@@ -58,17 +58,17 @@ O servidor estará em execução em http://localhost:3000.
 ## Rotas da API
 POST /shorten: Encurta uma URL longa.
 
-GET /:hash: Redireciona para a URL original correspondente à URL curta.
+GET /:hash Redireciona para a URL original correspondente à URL curta.
 
-GET /:/: Retorna todas as URLs encurtadas.
+GET / Retorna todas as URLs encurtadas.
 
-GET /url/:id: Retorna uma URL encurtada com base no ID.
+GET /url/:id Retorna uma URL encurtada com base no ID.
 
-GET /urls/:date: Retorna URLs encurtadas com base na data.
+GET /urls/:date Retorna URLs encurtadas com base na data.
 
-PUT /putUrl/:id: Atualiza uma url encurtada por ID
+PUT /putUrl/:id Atualiza uma url encurtada por ID
 
-DELETE /delete/:id: Excluir uma url encurtada por ID
+DELETE /delete/:id Excluir uma url encurtada por ID
 
 
 ### Contribuição
